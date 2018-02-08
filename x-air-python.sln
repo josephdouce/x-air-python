@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "x-air-python", "x-air-python.pyproj", "{80B15F8D-AB23-4D02-A82D-4AF2D9B1C686}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B15F8D-AB23-4D02-A82D-4AF2D9B1C686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B15F8D-AB23-4D02-A82D-4AF2D9B1C686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4CAF8EC-1424-42AA-B1A7-C08C330C79E3}
+	EndGlobalSection
+EndGlobal
