@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{80b15f8d-ab23-4d02-a82d-4af2d9b1c686}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>x-air.py</StartupFile>
+    <StartupFile>x-air-python.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
