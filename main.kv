@@ -1,85 +1,106 @@
+<Placeholder>:
+    canvas.before: 
+        Color: 
+            rgb: 1,0,0 
+        Line:
+            width: 1
+            rectangle: (self.x, self.y, self.width, self.height)
+            rectangle: (self.x, self.y, self.width, self.height)
+
 <XAirPython>:
-    GridLayout:
-        rows: 10
-        cols: 10
-        Label:
-            text: str(root.meters[0])
-        Label:
-            text: str(root.meters[1])
-        Label:
-            text: str(root.meters[2])
-        Label:
-            text: str(root.meters[3])
-        Label:
-            text: str(root.meters[4])
-        Label:
-            text: str(root.meters[5])
-        Label:
-            text: str(root.meters[6])
-        Label:
-            text: str(root.meters[7])
-        Label:
-            text: str(root.meters[8])
-        Label:
-            text: str(root.meters[9])
-        Label:
-            text: str(root.meters[10])
-        Label:
-            text: str(root.meters[11])
-        Label:
-            text: str(root.meters[12])
-        Label:
-            text: str(root.meters[13])
-        Label:
-            text: str(root.meters[14])
-        Label:
-            text: str(root.meters[15])
-        Label:
-            text: str(root.meters[16])
-        Label:
-            text: str(root.meters[17])
-        Label:
-            text: str(root.meters[18])
-        Label:
-            text: str(root.meters[19])
-        Label:
-            text: str(root.meters[20])
-        Label:
-            text: str(root.meters[21])
-        Label:
-            text: str(root.meters[22])
-        Label:
-            text: str(root.meters[23])
-        Label:
-            text: str(root.meters[24])
-        Label:
-            text: str(root.meters[25])
-        Label:
-            text: str(root.meters[26])
-        Label:
-            text: str(root.meters[27])
-        Label:
-            text: str(root.meters[28])
-        Label:
-            text: str(root.meters[29])
-        Label:
-            text: str(root.meters[30])
-        Label:
-            text: str(root.meters[31])
-        Label:
-            text: str(root.meters[32])
-        Label:
-            text: str(root.meters[33])
-        Label:
-            text: str(root.meters[34])
-        Label:
-            text: str(root.meters[35])
-        Label:
-            text: str(root.meters[36])
-        Label:
-            text: str(root.meters[37])
-        Label:
-            text: str(root.meters[38])
-        Label:
-            text: str(root.meters[39])
-            
+    orientation: 'horizontal'
+    Placeholder:
+        size_hint: 7/8,1
+        orientation: 'vertical'
+        TabbedPanel:
+            tab_width: 50
+            do_default_tab: False
+            TabbedPanelItem:
+                Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+                    Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+            TabbedPanelItem:
+                Placeholder:
+        Placeholder:
+            Placeholder:
+                canvas.before: 
+                    Color: 
+                        rgb: 0,1,0 
+                    Rectangle:
+                        pos: (self.x+5,self.y+5)
+                        size: (9, root.meters[0] * 100)
+            Placeholder:  
+                orientation: 'vertical'
+                Placeholder:
+                    size_hint: 1,0.4
+                Slider:
+                    size_hint: 1,0.6
+                    orientation: 'vertical'
+                    min: 0
+                    max : 1 
+                    value : 0.5
+                    canvas.before: 
+                        Color: 
+                            rgb: 1,0,0 
+                        Line:
+                            width: 1
+                            rectangle: (self.x, self.y, self.width, self.height)
+                Placeholder:
+                    size_hint: 1,0.2
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:
+            Placeholder:          
+    Placeholder:
+        size_hint: 1/8,1
+                    
