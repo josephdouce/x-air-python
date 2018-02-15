@@ -29,7 +29,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server_address = ('192.168.1.101', 10024)
  
 # ui size
-Config.set('graphics', 'width', '1024')
+Config.set('graphics', 'width', '1200')
 Config.set('graphics', 'height', '768')
 Config.write()
 
@@ -37,7 +37,12 @@ Config.write()
 class XAirPython(BoxLayout):
     # start all meter values at 0
     meters = ListProperty([0] * 100)
+    sends = ListProperty([[0.1] * 10,[0.2] * 10,[0.3] * 10,[0.4] * 10,[0.5] * 10,[0.6] * 10,[0.7] * 10,[0.8] * 10,[0.9] * 10,[1] * 10,[0.9] * 10,[0.8] * 10,[0.7] * 10,[0.6] * 10,[0.5] * 10,[0.4] * 10,[0.3] * 10,[0.2] * 10])
     
+    def send_test(self, *args):
+        sends = self.sends
+        sends += [sends.pop(0)]
+
     # decode meters 
     def decode_meters(self, data):
 
@@ -83,20 +88,32 @@ class XAirPython(BoxLayout):
                 self.meters = self.decode_meters(data)
 
 # dummy class see kv file
-class Placeholder(BoxLayout):
-  pass
+class BoxBorder(BoxLayout):
+    pass
+
+class MeterPanel(BoxLayout):
+    meter_value = NumericProperty()
+
+class BusesPanel(BoxLayout):
+    send_values = ListProperty([0,0,0,0,0,0,0,0,0,0,0])
+
 
 # main class
 class Main(App):
     def build(self):
-        # new instance or XAirPython
+        # new instance of XAirPython
         xair = XAirPython()
         # subscribe to meters
         xair.subscribe('2')
         # schedule refresh meter subscription
         Clock.schedule_interval(partial(xair.subscribe, '2'), 9)
         # schedule check for incoming data
-        Clock.schedule_interval(xair.recieve, 1/100)
+        Clock.schedule_interval(xair.recieve, 1/20)
+
+        # schedule sends test event
+        # Clock.schedule_interval(xair.send_test, 1/20)
+
+        # return UI
         return xair
 
 # run app

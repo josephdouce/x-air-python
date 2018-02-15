@@ -1,4 +1,4 @@
-<Placeholder>:
+<BoxBorder>:
     canvas.before: 
         Color: 
             rgb: 1,0,0 
@@ -7,100 +7,192 @@
             rectangle: (self.x, self.y, self.width, self.height)
             rectangle: (self.x, self.y, self.width, self.height)
 
+<MeterPanel>:
+    orientation: 'vertical'
+    BoxBorder:
+        size_hint: 1,0.4
+    Slider:
+        size_hint: 1,0.6
+        orientation: 'vertical'
+        min: 0
+        max : 1 
+        value : 0.5
+        canvas.before: 
+            Color: 
+                rgb: 1,0,0 
+            Line:
+                width: 1
+                rectangle: (self.x, self.y, self.width, self.height)
+            Color: 
+                rgb: 0,1,0 
+            Rectangle:
+                pos: (self.x+5,self.y+5)
+                size: (2, root.meter_value)
+    BoxBorder:
+        size_hint: 1,0.2
+        
+<BusesPanel>:
+    canvas.before: 
+        Color: 
+            rgb: 1,1,0 
+        Rectangle:
+            pos: (self.x+5,self.y+5)
+            size: (root.send_values[0] * (self.width-10), 8)
+        Color: 
+            rgb: 1,1,0
+        Rectangle:
+            pos: (self.x+5,self.y+15)
+            size: (root.send_values[1] * (self.width-10), 8)
+        Color: 
+            rgb: 1,1,0 
+        Rectangle:
+            pos: (self.x+5,self.y+25)
+            size: (root.send_values[2] * (self.width-10), 8)
+        Color: 
+            rgb: 1,1,0
+        Rectangle:
+            pos: (self.x+5,self.y+35)
+            size: (root.send_values[3] * (self.width-10), 8)
+        Color: 
+            rgb: 1,1,0
+        Rectangle:
+            pos: (self.x+5,self.y+45)
+            size: (root.send_values[4] * (self.width-10), 8)
+        Color: 
+            rgb: 1,1,0 
+        Rectangle:
+            pos: (self.x+5,self.y+55)
+            size: (root.send_values[5] * (self.width-10), 8)
+        Color: 
+            rgb: 0,0,1 
+        Rectangle:
+            pos: (self.x+5,self.y+65)
+            size: (root.send_values[6] * (self.width-10), 8)
+        Color: 
+            rgb: 0,0,1 
+        Rectangle:
+            pos: (self.x+5,self.y+75)
+            size: (root.send_values[7] * (self.width-10), 8)
+        Color: 
+            rgb: 0,0,1 
+        Rectangle:
+            pos: (self.x+5,self.y+85)
+            size: (root.send_values[8] * (self.width-10), 8)
+        Color: 
+            rgb: 0,0,1 
+        Rectangle:
+            pos: (self.x+5,self.y+95)
+            size: (root.send_values[9] * (self.width-10), 8)
+  
 <XAirPython>:
     orientation: 'horizontal'
-    Placeholder:
+    BoxBorder:
         size_hint: 7/8,1
         orientation: 'vertical'
         TabbedPanel:
             tab_width: 50
             do_default_tab: False
             TabbedPanelItem:
-                Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
-                    Placeholder:
+                BoxBorder:
+                    BusesPanel:
+                        send_values: root.sends[0]
+                    BusesPanel:
+                        send_values: root.sends[1]
+                    BusesPanel:
+                        send_values: root.sends[2]
+                    BusesPanel:
+                        send_values: root.sends[3]
+                    BusesPanel:
+                        send_values: root.sends[4]
+                    BusesPanel:
+                        send_values: root.sends[5]
+                    BusesPanel:
+                        send_values: root.sends[6]
+                    BusesPanel:
+                        send_values: root.sends[7]
+                    BusesPanel:
+                        send_values: root.sends[8]
+                    BusesPanel:
+                        send_values: root.sends[9]
+                    BusesPanel:
+                        send_values: root.sends[10]
+                    BusesPanel:
+                        send_values: root.sends[11]
+                    BusesPanel:
+                        send_values: root.sends[12]
+                    BusesPanel:
+                        send_values: root.sends[13]
+                    BusesPanel:
+                        send_values: root.sends[14]
+                    BusesPanel:
+                        send_values: root.sends[15]
+                    BusesPanel:
+                        send_values: root.sends[16]
+                    BusesPanel:
+                    BusesPanel:
+                    BusesPanel:
+                    BusesPanel:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
+                BoxBorder:
             TabbedPanelItem:
-                Placeholder:
-        Placeholder:
-            Placeholder:
-                canvas.before: 
-                    Color: 
-                        rgb: 0,1,0 
-                    Rectangle:
-                        pos: (self.x+5,self.y+5)
-                        size: (9, root.meters[0] * 100)
-            Placeholder:  
-                orientation: 'vertical'
-                Placeholder:
-                    size_hint: 1,0.4
-                Slider:
-                    size_hint: 1,0.6
-                    orientation: 'vertical'
-                    min: 0
-                    max : 1 
-                    value : 0.5
-                    canvas.before: 
-                        Color: 
-                            rgb: 1,0,0 
-                        Line:
-                            width: 1
-                            rectangle: (self.x, self.y, self.width, self.height)
-                Placeholder:
-                    size_hint: 1,0.2
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:
-            Placeholder:          
-    Placeholder:
+                BoxBorder:
+        BoxBorder:
+            MeterPanel:
+                meter_value: root.meters[0] * 100
+            MeterPanel:
+                meter_value: root.meters[1] * 100
+            MeterPanel:
+                meter_value: root.meters[2] * 100
+            MeterPanel:
+                meter_value: root.meters[3] * 100
+            MeterPanel:
+                meter_value: root.meters[4] * 100
+            MeterPanel:
+                meter_value: root.meters[5] * 100
+            MeterPanel:
+                meter_value: root.meters[6] * 100
+            MeterPanel:
+                meter_value: root.meters[7] * 100
+            MeterPanel:
+                meter_value: root.meters[8] * 100
+            MeterPanel:
+                meter_value: root.meters[9] * 100
+            MeterPanel:
+                meter_value: root.meters[10] * 100
+            MeterPanel:
+                meter_value: root.meters[11] * 100
+            MeterPanel:
+                meter_value: root.meters[12] * 100
+            MeterPanel:
+                meter_value: root.meters[13] * 100
+            MeterPanel:
+                meter_value: root.meters[14] * 100
+            MeterPanel:
+                meter_value: root.meters[15] * 100
+            MeterPanel:
+                meter_value: root.meters[16] * 100
+            MeterPanel:
+                meter_value: root.meters[17] * 100
+            MeterPanel:
+                meter_value: root.meters[18] * 100
+            MeterPanel:
+                meter_value: root.meters[19] * 100
+            MeterPanel:
+                meter_value: root.meters[20] * 100
+    BoxBorder:
         size_hint: 1/8,1
                     
