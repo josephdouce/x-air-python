@@ -4,6 +4,7 @@ import sys
 import time
 import random
 from functools import partial
+from collections import namedtuple
 
 # kivy
 from kivy.app import App
@@ -18,16 +19,19 @@ from kivy.properties import *
 from kivy.graphics import Rectangle, Color
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivy.config import Config
+from kivy.logger import Logger
 
 # import needed modules from osc4py3
 from osc4py3.oscbuildparse import *
+
+XInfo = namedtuple("XInfo", ["host", "port", "name", "model", "version"])
 
 # sockets
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # server
-server_address = ('192.168.1.101', 10024)
- 
+selected_xinfo = None
+
 # ui size
 Config.set('graphics', 'width', '1200')
 Config.set('graphics', 'height', '768')
@@ -72,12 +76,12 @@ class XAirPython(BoxLayout):
     def subscribe(self, num, *args):
         msg = OSCMessage("/batchsubscribe",",ssiii",["meters/" + num, "/meters/" + num, 0,0,1])
         # send
-        sent = sock.sendto(encode_packet(msg), server_address)
+        sent = sock.sendto(encode_packet(msg), (selected_xinfo.host, selected_xinfo.port))
     
     # recieve data
     def recieve(self, *args):
         # connect
-        sent = sock.connect(server_address)
+        sent = sock.connect((selected_xinfo.host, selected_xinfo.port))
 
         # recieve
         data, server = sock.recvfrom(512)
@@ -101,6 +105,8 @@ class BusesPanel(BoxLayout):
 # main class
 class Main(App):
     def build(self):
+        self.title = "Connected to {} at {}:{} [{} v{}]".format(selected_xinfo.name, selected_xinfo.host, selected_xinfo.port, selected_xinfo.model, selected_xinfo.version)
+
         # new instance of XAirPython
         xair = XAirPython()
         # subscribe to meters
@@ -116,6 +122,37 @@ class Main(App):
         # return UI
         return xair
 
+
+def auto_detect_xair():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, True)
+    s.settimeout(3.0)
+
+    msg = OSCMessage("/xinfo", ",", [])
+    s.sendto(encode_packet(msg), ("<broadcast>", 10024))
+
+    # Currently, this only supports one XAir on the network and will return 
+    # whichever replies first.
+    try:
+        data, server = s.recvfrom(512)
+    except:
+        return None
+    finally:
+        s.close()
+
+    xinfo = decode_packet(data)
+    ip,name,model,version = xinfo.arguments
+    return XInfo(server[0], server[1], name, model, version)
+
+
 # run app
 if __name__ == "__main__":
+    selected_xinfo = auto_detect_xair()
+    if not selected_xinfo:
+        Logger.error("XAir Detect: Failed to detect an XAir on network.")
+        exit(1)
+
+    Logger.info("XAir Detect: Found {} at {}:{} [{} v{}]".format(selected_xinfo.name, selected_xinfo.host, selected_xinfo.port, selected_xinfo.model, selected_xinfo.version))
+
     Main().run()
+
