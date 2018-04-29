@@ -1,2 +1,10 @@
-pip==9.0.1
+pip==10.0.1
 setuptools==28.8.0
+wheel==0.31.0
+docutils==0.14
+pypiwin32==223
+kivy.deps.angle==0.1.6
+kivy.deps.glew==0.1.9
+kivy.deps.sdl2==0.1.17
+Kivy==1.10.0
+osc4py3==1.0.4
